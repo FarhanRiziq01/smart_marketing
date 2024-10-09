@@ -22,3 +22,13 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+// Rute untuk halaman dashboard admin
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});
+
+// Rute untuk halaman dashboard user
+Route::middleware(['auth'])->group(function () {
+    Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+});
