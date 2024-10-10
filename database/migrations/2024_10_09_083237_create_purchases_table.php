@@ -25,22 +25,4 @@ return new class extends Migration
         Schema::dropIfExists('purchases');
     }
 
-    public function up()
-    {
-        Schema::create('purchases', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained(); // foreign key untuk user
-            $table->string('book_title'); // judul bab buku yang dibeli
-            $table->string('proof_of_payment')->nullable(); // bukti pembayaran (gambar)
-            $table->boolean('is_verified')->default(false); // status verifikasi
-            $table->timestamps(); // created_at dan updated_at
-        });
-    }
-
-        public function down()
-    {
-        Schema::dropIfExists('purchases');
-    }
-
-
 };
